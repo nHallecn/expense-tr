@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ── CSS variables ──────────────────────────────────── */
+:root {
+  --sidebar-w: 220px;
+
+  /* colors */
+  --bg:        #0F1117;
+  --bg-card:   #181C27;
+  --bg-hover:  #1E2333;
+  --border:    #252A3A;
+  --text:      #F0F2F8;
+  --text-2:    #8890AA;
+  --text-3:    #555E78;
+  --accent:    #6C8EFF;
+  --green:     #3ECF8E;
+  --red:       #FF6B6B;
+  --yellow:    #FFB547;
+  --purple:    #A78BFA;
+
+  /* chart category colors */
+  --cat-food:          #6C8EFF;
+  --cat-transport:     #3ECF8E;
+  --cat-shopping:      #FFB547;
+  --cat-bills:         #A78BFA;
+  --cat-entertainment: #FF6B6B;
+  --cat-health:        #34D399;
+  --cat-salary:        #60A5FA;
+  --cat-other:         #94A3B8;
+
+  --radius:    12px;
+  --radius-sm: 8px;
+  --shadow:    0 4px 24px rgba(0,0,0,0.4);
+}
+
+/* ── Reset ──────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Sora', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+button { cursor: pointer; font-family: inherit; }
+input, select { font-family: inherit; }
+
+/* ── Scrollbar ──────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
+
+/* ── Animations ─────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ── Layout ─────────────────────────────────────────── */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main-content {
+  margin-left: var(--sidebar-w);
+  flex: 1;
+  padding: 32px;
+  max-width: 1100px;
+  animation: fadeUp 0.4s ease;
+}
+
+/* ── Card ────────────────────────────────────────────── */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+
+/* ── Overlay ─────────────────────────────────────────── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.2s ease;
+}
