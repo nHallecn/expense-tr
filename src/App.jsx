@@ -1,7 +1,10 @@
+import AddTransactionModal from "./components/AddTransactionModal"
 
 const App = () => {
   return (
-    <div>App</div>
+    <div>
+      <AddTransactionModal />
+    </div>
   )
 }
 
