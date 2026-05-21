@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { useTransactions } from "../context/TransactionContext";
 import { CATEGORIES } from "../utils/constants";
 import { todayString } from "../utils/helpers";
+import { useTransactions } from "../context/TransactionContext";
 
 // Modal form to add a new transaction.
 // Props:
@@ -16,7 +16,7 @@ const EMPTY_FORM = {
 };
 
 export default function AddTransactionModal({ onClose }) {
-  const { addTransaction } = useTransactions();
+  const { addTransaction } = useTransactions;
   const [form, setForm] = useState(EMPTY_FORM);
   const [errors, setErrors] = useState({});
 
