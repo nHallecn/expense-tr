@@ -1,16 +1,56 @@
-# React + Vite
+# 💳 Expense Tracker — React Web
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full dashboard app built with React + Vite + Recharts.
 
-Currently, two official plugins are available:
+## Project structure
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```
+expense-tracker-web/
+├── index.html
+├── vite.config.js
+├── package.json
+└── src/
+    ├── main.jsx                        ← boots the app
+    ├── App.jsx                         ← shell: page routing + modal state
+    |── index.css                       ← global CSS variables + reset                
+    │
+    ├── context/
+    │   └── TransactionContext.jsx      ← useReducer + Context (global state)
+    │
+    ├── utils/
+    │   ├── constants.js                ← categories, seed data
+    │   └── helpers.js                  ← pure functions (format, compute)
+    │                  
+    │
+    ├── components/                     ← reusable UI pieces
+    │   ├── Sidebar.jsx
+    │   ├── StatCard.jsx
+    │   ├── DonutChart.jsx
+    │   ├── CategoryBarChart.jsx
+    │   ├── RecentExpenses.jsx
+    │   ├── TransactionItem.jsx
+    │   └── AddTransactionModal.jsx
+    │
+    └── pages/                          ← full screens
+        ├── Dashboard.jsx
+        └── Expenses.jsx
+```
 
-## React Compiler
+## Key concepts in each file
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| File | What it teaches |
+|---|---|
+| `TransactionContext.jsx` | `useReducer`, `createContext`, `useContext`, custom hooks |
+| `helpers.js` | Pure functions separated from React logic |
+| `Dashboard.jsx` | `useMemo` for derived data, composing components |
+| `Expenses.jsx` | Filtering with `useMemo`, controlled selects |
+| `AddTransactionModal.jsx` | Controlled form, validation, `useEffect` for keyboard |
+| `TransactionItem.jsx` | Two-step delete confirmation with local state |
+| `DonutChart.jsx` | Recharts `PieChart`, `useMemo` for chart data |
+| `App.jsx` | String-based page routing, lifting modal state up |
 
-## Expanding the ESLint configuration
+## Pages left to build (great practice!)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Categories** — list all categories, show totals per category
+- **Reports** — monthly breakdown, income vs expense trend line
+- **Settings** — clear all data, change currency, export CSV
